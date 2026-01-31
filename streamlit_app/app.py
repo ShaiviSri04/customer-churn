@@ -175,8 +175,11 @@ with input_col:
         ["No phone service"] if PhoneService == "No" else ["Yes","No"]
     )
 
-    InternetService = st.selectbox("Internet Service",["DSL","Fiber optic","No"])
-    internet_opts = ["No internet service"] if InternetService == "No" else ["Yes","No"]
+    InternetService = st.selectbox(
+    "Internet Service",
+    ["DSL", "Fiber optic", "No internet service"]
+    )
+    internet_opts = ["No internet service"] if InternetService == "No internet service" else ["Yes","No"]
     OnlineSecurity = st.selectbox("Online Security",internet_opts)
     OnlineBackup = st.selectbox("Online Backup", internet_opts)
     DeviceProtection = st.selectbox("Device Protection", internet_opts)
