@@ -258,8 +258,10 @@ if predict_clicked:
                 "risk": result["risk_level"]
             })
         else:
-            st.error("API error. Please check backend logs.")
+            st.error(f"API error {response.status_code}")
+            st.code(response.text)
             st.stop()
+
 
     except Exception:
         st.error("Could not connect to prediction service.")
