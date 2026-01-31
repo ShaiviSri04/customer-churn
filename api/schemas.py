@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from typing import Optional
 
 class CustomerInput(BaseModel):
     gender: str
@@ -19,4 +20,4 @@ class CustomerInput(BaseModel):
     PaperlessBilling: str
     PaymentMethod: str
     MonthlyCharges: float
-    TotalCharges: str
+    TotalCharges: Optional[float] = None

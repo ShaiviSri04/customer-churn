@@ -245,7 +245,7 @@ if predict_clicked:
 
     try:
         response = requests.post(
-            "https://customer-churn-api.onrender.com/predict",
+            "https://customer-churn-sxn0.onrender.com",
             json=payload,
             timeout=10
         )
