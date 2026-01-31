@@ -178,7 +178,7 @@ with input_col:
     InternetService = st.selectbox("Internet Service",["DSL","Fiber optic","No"])
     internet_opts = ["No internet service"] if InternetService == "No" else ["Yes","No"]
     OnlineSecurity = st.selectbox("Online Security",internet_opts)
-    OnlineBackup = st.selectbox("Onliine Backup",internet_opts)
+    OnlineBackup = st.selectbox("Online Backup", internet_opts)
     DeviceProtection = st.selectbox("Device Protection", internet_opts)
     TechSupport = st.selectbox("Tech Support", internet_opts)
     StreamingTV = st.selectbox("Streaming TV", internet_opts)
@@ -200,6 +200,13 @@ with input_col:
 
     MonthlyCharges = st.number_input("Monthly Charges", min_value=0.0, value=70.0)
     TotalCharges = st.text_input("Total Charges (optional)")
+
+    if TotalCharges.strip() == "":
+        TotalCharges = 0.0
+    else:
+        TotalCharges = float(TotalCharges)
+
+
 
     predict_clicked = st.button(
     "Predict Churn",
@@ -237,7 +244,7 @@ if predict_clicked:
         response = requests.post(
             "https://customer-churn-api.onrender.com/predict",
             json=payload,
-            timeout=5
+            timeout=10
         )
 
         if response.status_code == 200:
@@ -369,6 +376,7 @@ components.html(
         color: #94a3b8;
         font-size: 14px;
     }
+
     .footer a {
         color: #94a3b8;
         margin: 0 12px;
@@ -376,106 +384,17 @@ components.html(
         text-decoration: none;
         transition: color 0.2s ease;
     }
+
     .footer a:hover {
         color: #38bdf8;
-
-        .footer {
-    text-align: center;
-    padding: 12px;
-}
-
-.footer a {
-    margin: 0 8px;
-    font-size: 22px;
-}
-
-@media (max-width: 480px) {
-    .footer a {
-        font-size: 20px;
-        margin: 0 6px;
-    }
-}
-
     }
 
-    /* ---------------------------
-   RESPONSIVE FIXES
---------------------------- */
-
-/* Tablets & small laptops */
-@media (max-width: 1024px) {
-    .big-number {
-        font-size: 36px;
+    @media (max-width: 480px) {
+        .footer a {
+            font-size: 20px;
+            margin: 0 6px;
+        }
     }
-
-    .card {
-        padding: 16px 18px;
-    }
-}
-
-/* Mobile phones */
-@media (max-width: 768px) {
-
-    /* Stack columns vertically */
-    section.main > div {
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
-    }
-
-    /* Reduce card padding */
-    .card {
-        padding: 14px 16px;
-        border-radius: 12px;
-    }
-
-    /* Reduce headings */
-    h1 {
-        font-size: 26px;
-        text-align: center;
-    }
-
-    h2 {
-        font-size: 20px;
-    }
-
-    h3 {
-        font-size: 18px;
-    }
-
-    /* Probability number scaling */
-    .big-number {
-        font-size: 32px;
-    }
-
-    /* Reduce bullet spacing */
-    .reason {
-        font-size: 14px;
-        margin: 2px 0;
-    }
-
-    /* Summary rows stack */
-    .summary-row {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .summary-value {
-        margin-top: 2px;
-    }
-}
-
-/* Extra small devices */
-@media (max-width: 480px) {
-    .big-number {
-        font-size: 28px;
-    }
-
-    .risk-low,
-    .risk-high {
-        font-size: 16px;
-    }
-}
-
     </style>
 
     <div class="footer">
