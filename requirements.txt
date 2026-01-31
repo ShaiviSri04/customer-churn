@@ -6,3 +6,6 @@ xgboost
 pandas
 numpy
 joblib
+streamlit
+requests
+fpdf
