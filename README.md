@@ -133,5 +133,3 @@ docker run -p 8000:8000 churn-api
 * **Backend**: Render (Dockerized FastAPI)
 * **Frontend**: Streamlit Cloud
 * Cold start may cause slight delay on first request
-
-Just say the word 💙
